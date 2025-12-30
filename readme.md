@@ -29,7 +29,7 @@ Options:
 ## Install 
 
 ```bash
-cargo install --git https://github.com/raftio/gam.git
+cargo install --git https://github.com/raftio/gamm.git
 ```
 
 ## Getting Started
