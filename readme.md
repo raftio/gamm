@@ -1,5 +1,13 @@
 # gamm 
 
+**gamm** (Git Account Manager) automatically switches your git identity based on which repository you're working in. Perfect for developers juggling multiple git accounts—like personal and work profiles—who want to ensure commits are always made with the correct name, email, and GPG settings.
+
+### How It Works
+
+1. **Create profiles** with different git credentials (name, email, GPG signing preferences)
+2. **Assign profiles to repositories** — when you first commit to a new repo, gamm prompts you to pick a profile
+3. **Automatic switching** — on every commit, a pre-commit hook detects the repository and applies the correct git config globally before the commit proceeds
+
 ```
 Git Account Manager - Manage multiple git configurations
 

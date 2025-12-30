@@ -245,7 +245,7 @@ mod tests {
     fn test_config_dir_exists() {
         let dir = ConfigStore::config_dir();
         assert!(dir.is_some());
-        assert!(dir.unwrap().ends_with("gam"));
+        assert!(dir.unwrap().ends_with("gamm"));
     }
 
     #[test]
