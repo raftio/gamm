@@ -9,3 +9,7 @@ serde_json = "1"
 dirs = "5"
 clap = { version = "4", features = ["derive"] }
 dialoguer = "0.11"
+
+[[bin]]
+name = "gamm"
+path = "gamm/main.rs"
