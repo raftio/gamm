@@ -126,6 +126,11 @@ fn init() -> Result<(), Box<dyn std::error::Error>> {
     println!("To enable the hook globally, run:");
     println!("  git config --global core.hooksPath ~/.githooks");
 
+    if let Some(config_dir) = store::ConfigStore::config_dir() {
+        println!();
+        println!("Config storage: {}", config_dir.display());
+    }
+
     Ok(())
 }
 
@@ -740,6 +745,29 @@ fn cleanup() -> Result<(), Box<dyn std::error::Error>> {
         // Write back the file without gam section
         fs::write(&pre_commit_path, format!("{}\n", new_content))?;
         println!("Removed gamm config from: {}", pre_commit_path.display());
+    }
+
+    // Clean up config files
+    if let Some(config_path) = store::ConfigStore::config_path() {
+        if config_path.exists() {
+            fs::remove_file(&config_path)?;
+            println!("Removed config: {}", config_path.display());
+        }
+    }
+
+    if let Some(repos_path) = repo::RepoStore::repos_path() {
+        if repos_path.exists() {
+            fs::remove_file(&repos_path)?;
+            println!("Removed repos: {}", repos_path.display());
+        }
+    }
+
+    // Remove config directory if empty
+    if let Some(config_dir) = store::ConfigStore::config_dir() {
+        if config_dir.exists() && config_dir.read_dir()?.next().is_none() {
+            fs::remove_dir(&config_dir)?;
+            println!("Removed empty directory: {}", config_dir.display());
+        }
     }
 
     Ok(())
