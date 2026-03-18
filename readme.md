@@ -26,7 +26,32 @@ Options:
   -h, --help  Print help
 ```
 
-## Install 
+## Install
+
+### macOS / Linux
+
+```bash
+# macOS (Apple Silicon)
+curl -L https://github.com/raftio/gamm/releases/latest/download/gamm-macos-aarch64 -o /usr/local/bin/gamm
+
+# macOS (Intel)
+curl -L https://github.com/raftio/gamm/releases/latest/download/gamm-macos-x86_64 -o /usr/local/bin/gamm
+
+# Linux (x86_64)
+curl -L https://github.com/raftio/gamm/releases/latest/download/gamm-linux-x86_64 -o /usr/local/bin/gamm
+```
+
+Then make it executable:
+
+```bash
+chmod +x /usr/local/bin/gamm
+```
+
+### Windows
+
+Download `gamm-windows-x86_64.exe` from the [latest release](https://github.com/raftio/gamm/releases/latest), rename it to `gamm.exe`, and place it somewhere in your `PATH`.
+
+### Build from source
 
 ```bash
 cargo install --git https://github.com/raftio/gamm.git
